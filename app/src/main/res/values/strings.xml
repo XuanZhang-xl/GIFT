@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">GIFT</string>
-    <string name="button">开始</string>
+    <string name="button1">开始</string>
+    <string name="button2">结束</string>
+    <string name="button3">广播</string>
+    <string name="edittext2">名字</string>
+    <string name="edittext3">等级</string>
+    <string name="button4">test</string>
+    <string name="button5">test</string>
+    <string name="button6">test</string>
+    <string name="button7">test</string>
+    <string name="button8">test</string>
 </resources>

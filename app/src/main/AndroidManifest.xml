@@ -9,13 +9,44 @@
         android:roundIcon="@drawable/ic_giraffe"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--一个application可以有1个或多个活动，每个活动都需要在这儿声明-->
         <activity android:name=".Gift">
+            <!--意图过滤器标签中需要包含 MAIN 动作和 LAUNCHER 类别-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--一个application可以有1个或多个服务-->
+        <service android:name=".service.GiftService" />
+
+        <!--广播接收器,用于响应来自其他应用程序或者系统的广播消息-->
+        <receiver android:name=".receiver.GiftReceiver">
+            <!--意图过滤器, 在intent.setAction("cn.uprogrammer.CUSTOM_INTENT");中定义-->
+            <intent-filter android:priority="1000">
+                <action android:name="xl.birthday.gift.CUSTOM_INTENT"/>
+            </intent-filter>
+            <!--
+            重要系统事件:
+            android.intent.action.BATTERY_CHANGED 	持久的广播，包含电池的充电状态，级别和其他信息。
+            android.intent.action.BATTERY_LOW 	    标识设备的低电量条件。
+            android.intent.action.BATTERY_OKAY 	    标识电池在电量低之后，现在已经好了。
+            android.intent.action.BOOT_COMPLETED 	在系统完成启动后广播一次。
+            android.intent.action.BUG_REPORT 	    显示报告bug的活动。
+            android.intent.action.CALL 	            执行呼叫数据指定的某人。
+            android.intent.action.CALL_BUTTON 	    用户点击"呼叫"按钮打开拨号器或者其他拨号的合适界面。
+            android.intent.action.DATE_CHANGED 	    日期发生改变。
+            android.intent.action.REBOOT 	        设备重启。
+
+            注意: 本地广播是无法通过静态注册的方式来接收的，因为静态注册主要就是为了让程序在未启动的情况下也能收到广播，而发送本地广播时，我们的程序肯定已经启动了
+            -->
+        </receiver>
+
+        <provider android:authorities="xl.birthday.gift" android:name=".provider.GiftContentProvider">
+
+        </provider>
     </application>
 
 </manifest>
